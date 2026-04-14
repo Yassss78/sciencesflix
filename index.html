@@ -155,18 +155,35 @@
             border-color: #E50914;
             transform: translateY(-5px);
         }
+
+        /* Message de confirmation personnalisé (remplace alert) */
+        #customAlert {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #E50914;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 4px;
+            z-index: 1001;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
     </style>
 </head>
 <body>
 
+    <!-- Notification Personnalisée -->
+    <div id="customAlert">Lien copié dans le presse-papier !</div>
+
     <!-- Modale de Sélection de Classe Multi-étapes -->
     <div id="classModal">
         <div class="modal-content">
-            <!-- Header Dynamique -->
             <h3 id="modalTitle" class="bebas text-4xl mb-2">Choisir votre niveau</h3>
             <p id="selectedDetails" class="netflix-red font-bold mb-8 uppercase tracking-widest text-sm italic"></p>
             
-            <!-- Étape 1 : Choix Niveau (Collège/Lycée) -->
+            <!-- Étape 1 : Choix Niveau -->
             <div id="stepLevel" class="grid grid-cols-1 gap-4">
                 <button onclick="goToClasses('Collège')" class="bg-white/10 hover:bg-white/20 border border-white/20 py-4 rounded text-xl font-bold transition uppercase">Collège</button>
                 <button onclick="goToClasses('Lycée')" class="bg-white/10 hover:bg-white/20 border border-white/20 py-4 rounded text-xl font-bold transition uppercase">Lycée</button>
@@ -180,7 +197,7 @@
                 <button onclick="resetModal()" class="mt-6 text-xs text-gray-500 hover:text-white uppercase tracking-widest font-bold">← Retour au niveau</button>
             </div>
 
-            <!-- Étape 3 : Choix Profil Élève -->
+            <!-- Étape 3 : Choix Profil -->
             <div id="stepProfile" class="hidden space-y-4">
                 <button onclick="selectProfile('Remise à niveau', 'J\'ai beaucoup de retard et j\'ai besoin de reprendre les bases.')" class="profile-btn w-full block">
                     <p class="text-white font-bold text-lg mb-1">Remise à niveau</p>
@@ -201,7 +218,7 @@
         </div>
     </div>
 
-    <!-- Barre de Navigation -->
+    <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 p-6 flex justify-between items-center px-[5%]">
         <div class="flex items-center gap-10">
             <h1 class="netflix-red bebas text-5xl tracking-tighter cursor-pointer" onclick="window.scrollTo(0,0)">SCIENCES<span class="text-white text-xl">FLIX</span></h1>
@@ -226,7 +243,6 @@
             </ul>
         </div>
         <div class="flex items-center gap-6">
-             <!-- Bouton de Partage Rapide -->
             <button onclick="shareSite()" class="text-white hover:text-red-600 transition p-2" title="Partager le site">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
             </button>
@@ -234,7 +250,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero-section">
         <div class="max-w-2xl">
             <h2 class="bebas text-8xl md:text-9xl leading-none italic uppercase mb-4 shadow-text">Objectif <span class="netflix-red">Réussite</span></h2>
@@ -246,7 +262,7 @@
             </div>
             <p class="text-xl text-gray-200 mb-8 leading-relaxed shadow-text">
                 Un accompagnement d'élite pour les élèves déterminés du 78. 
-                Des séances produites en blocs de 2 heures pour une immersion totale et une attention maximale. 
+                Des séances produites en blocs de 2 heures pour une immersion totale. 
                 La rigueur est la clé du scénario de votre mention au bac.
             </p>
             <div class="flex gap-4">
@@ -260,29 +276,29 @@
         </div>
     </section>
 
-    <!-- Matières Row -->
+    <!-- Matières -->
     <section class="px-[5%] mt-24 relative z-20 pb-12">
         <h3 class="text-2xl font-bold mb-6 italic tracking-wide">Continuer à apprendre...</h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div onclick="openModal('Mathématiques')" class="category-card aspect-video relative flex items-center justify-center group">
-                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=600" alt="[Image de Mathématiques]" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition">
+                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=600" alt="Maths" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition">
                 <div class="absolute inset-0 bg-black/30 group-hover:bg-transparent transition"></div>
                 <span class="relative bebas text-4xl tracking-widest text-white shadow-text">MATHÉMATIQUES</span>
             </div>
             <div onclick="openModal('Physique-Chimie')" class="category-card aspect-video relative flex items-center justify-center group">
-                <img src="https://images.unsplash.com/photo-1453847668862-487637052f8a?auto=format&fit=crop&q=80&w=600" alt="[Image de Physique]" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition">
+                <img src="https://images.unsplash.com/photo-1453847668862-487637052f8a?auto=format&fit=crop&q=80&w=600" alt="Physique" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition">
                 <div class="absolute inset-0 bg-black/30 group-hover:bg-transparent transition"></div>
                 <span class="relative bebas text-4xl tracking-widest text-white shadow-text text-center">PHYSIQUE<br>CHIMIE</span>
             </div>
             <div onclick="openModal('SVT')" class="category-card aspect-video relative flex items-center justify-center group">
-                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&q=80&w=600" alt="[Image de SVT]" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition">
+                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&q=80&w=600" alt="SVT" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition">
                 <div class="absolute inset-0 bg-black/30 group-hover:bg-transparent transition"></div>
                 <span class="relative bebas text-4xl tracking-widest text-white shadow-text">SVT</span>
             </div>
         </div>
     </section>
 
-    <!-- Infos détaillées -->
+    <!-- Infos -->
     <section id="infos" class="px-[5%] py-24 grid md:grid-cols-2 gap-20">
         <div>
             <h3 class="text-4xl font-bold mb-10 border-l-4 border-red-600 pl-4 text-white">Pourquoi choisir SciencesFlix ?</h3>
@@ -291,21 +307,21 @@
                     <span class="n-badge">N</span>
                     <div>
                         <p class="font-bold text-xl mb-1">Production Originale : 6 Ans d'Expérience</p>
-                        <p class="text-gray-400 text-lg">Une pédagogie rodée pour transformer les blocages en succès. Chaque cours est une leçon de clarté adaptée à chaque élève dans le secteur de Gargenville et ses environs.</p>
+                        <p class="text-gray-400 text-lg">Une pédagogie rodée pour transformer les blocages en succès. Chaque cours est une leçon de clarté adaptée.</p>
                     </div>
                 </div>
                 <div class="flex gap-6 items-start">
                     <span class="n-badge">N</span>
                     <div>
                         <p class="font-bold text-xl mb-1">Format Immersif : Séances de 2H</p>
-                        <p class="text-gray-400 text-lg">Le format idéal pour approfondir les concepts complexes et s'exercer sans interruption. Une attention captée à 100%.</p>
+                        <p class="text-gray-400 text-lg">Le format idéal pour approfondir les concepts complexes et s'exercer sans interruption.</p>
                     </div>
                 </div>
                 <div class="flex gap-6 items-start">
                     <span class="n-badge">N</span>
                     <div>
                         <p class="font-bold text-xl mb-1">Qualité Ultra : Rigueur & Réussite</p>
-                        <p class="text-gray-400 text-lg">Nous visons l'excellence. Si l'élève apporte la rigueur nécessaire, nous garantissons la mention aux examens.</p>
+                        <p class="text-gray-400 text-lg">Nous visons l'excellence. Si l'élève apporte la rigueur, nous garantissons la mention.</p>
                     </div>
                 </div>
             </div>
@@ -318,23 +334,19 @@
                     <p class="text-5xl font-bold text-white">60€ <span class="text-xl text-gray-500 font-normal">/ Séance de 2h</span></p>
                 </div>
                 <div>
-                    <p class="text-xs uppercase text-gray-500 tracking-widest mb-3 font-bold">Lieux de tournage autorisés (78)</p>
+                    <p class="text-xs uppercase text-gray-500 tracking-widest mb-3 font-bold">Lieux de tournage (78)</p>
                     <div class="flex flex-wrap gap-2 mt-2">
-                        <span class="bg-white/5 border border-zinc-700 px-4 py-1.5 rounded-full text-sm hover:bg-white/10 transition">Gargenville</span>
-                        <span class="bg-white/5 border border-zinc-700 px-4 py-1.5 rounded-full text-sm hover:bg-white/10 transition">Issou</span>
-                        <span class="bg-white/5 border border-zinc-700 px-4 py-1.5 rounded-full text-sm hover:bg-white/10 transition">Porcheville</span>
-                        <span class="bg-white/5 border border-zinc-700 px-4 py-1.5 rounded-full text-sm hover:bg-white/10 transition">Épone</span>
-                        <span class="bg-white/5 border border-zinc-700 px-4 py-1.5 rounded-full text-sm hover:bg-white/10 transition">Juziers</span>
-                        <span class="bg-white/5 border border-zinc-700 px-4 py-1.5 rounded-full text-sm hover:bg-white/10 transition">Meulan</span>
-                        <span class="bg-white/5 border border-zinc-700 px-4 py-1.5 rounded-full text-sm hover:bg-white/10 transition">Limay</span>
-                        <span class="bg-white/5 border border-zinc-700 px-4 py-1.5 rounded-full text-sm hover:bg-white/10 transition">Fontenay St-Père</span>
+                        <span class="bg-white/5 border border-zinc-700 px-4 py-1.5 rounded-full text-sm">Gargenville</span>
+                        <span class="bg-white/5 border border-zinc-700 px-4 py-1.5 rounded-full text-sm">Issou</span>
+                        <span class="bg-white/5 border border-zinc-700 px-4 py-1.5 rounded-full text-sm">Limay</span>
+                        <span class="bg-white/5 border border-zinc-700 px-4 py-1.5 rounded-full text-sm">Épone</span>
                     </div>
                 </div>
                 <div class="pt-8">
                     <p class="text-xs uppercase text-gray-500 tracking-widest mb-4 font-bold">Contactez la régie</p>
                     <div class="bg-netflix-red p-8 rounded-lg text-center shadow-2xl transform hover:scale-[1.02] transition cursor-pointer" onclick="location.href='tel:0753431555'">
                         <p class="bebas text-5xl tracking-widest text-white">07 53 43 15 55</p>
-                        <p class="text-sm font-bold mt-2 text-white">SCIENCES.FLIX@GMAIL.COM</p>
+                        <p class="text-sm font-bold mt-2 text-white">SCIENCEFLIXPRO@GMAIL.COM</p>
                     </div>
                 </div>
             </div>
@@ -352,24 +364,23 @@
             <ul class="space-y-3 text-sm">
                 <li class="hover:underline cursor-pointer">Centre d'aide</li>
                 <li class="hover:underline cursor-pointer">Recrutement</li>
-                <li class="hover:underline cursor-pointer">Préférences de cookies</li>
+                <li class="hover:underline cursor-pointer">Préférences cookies</li>
             </ul>
             <ul class="space-y-3 text-sm">
                 <li class="hover:underline cursor-pointer">Cartes cadeaux</li>
-                <li class="hover:underline cursor-pointer">Boutique SciencesFlix</li>
-                <li class="hover:underline cursor-pointer">Informations sur la société</li>
+                <li class="hover:underline cursor-pointer">Boutique</li>
+                <li class="hover:underline cursor-pointer">Société</li>
             </ul>
             <ul class="space-y-3 text-sm">
                 <li class="hover:underline cursor-pointer">Presse</li>
-                <li class="hover:underline cursor-pointer">Conditions d'utilisation</li>
+                <li class="hover:underline cursor-pointer">Conditions</li>
                 <li class="hover:underline cursor-pointer">Nous contacter</li>
             </ul>
         </div>
-        <p class="text-xs">© 2026 SciencesFlix - Soutien scolaire d'élite dans les Yvelines. Tous droits réservés.</p>
+        <p class="text-xs">© 2026 SciencesFlix - Soutien scolaire d'élite. Tous droits réservés.</p>
     </footer>
 
     <script>
-        // Gestion de la modale dynamique
         let currentSubject = "";
         let currentLevel = "";
         let currentClass = "";
@@ -460,31 +471,33 @@
 
             const mailSubject = `Demande de cours : ${subject} - ${className} (${profileLabel})`;
 
-            window.location.href = `mailto:sciences.flix@gmail.com?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
+            // Mise à jour de l'email : scienceflixpro@gmail.com
+            window.location.href = `mailto:scienceflixpro@gmail.com?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
             hideModal();
         }
 
-        // Fonction de partage
         function shareSite() {
+            const url = window.location.href;
             if (navigator.share) {
                 navigator.share({
                     title: 'SciencesFlix - Cours de Sciences d\'Élite',
-                    text: 'Découvre SciencesFlix, des cours particuliers de sciences immersifs comme sur Netflix !',
-                    url: window.location.href
+                    text: 'Découvre SciencesFlix, des cours particuliers immersifs !',
+                    url: url
                 });
             } else {
-                // Fallback si l'API de partage n'est pas dispo
-                const dummy = document.createElement('input');
-                document.body.appendChild(dummy);
-                dummy.value = window.location.href;
-                dummy.select();
+                const el = document.createElement('textarea');
+                el.value = url;
+                document.body.appendChild(el);
+                el.select();
                 document.execCommand('copy');
-                document.body.removeChild(dummy);
-                alert("Lien du site copié dans le presse-papier ! Partagez-le avec vos amis.");
+                document.body.removeChild(el);
+                
+                const toast = document.getElementById('customAlert');
+                toast.style.display = 'block';
+                setTimeout(() => { toast.style.display = 'none'; }, 3000);
             }
         }
 
-        // Effet scroll
         window.onscroll = function() {
             var nav = document.querySelector('nav');
             if (window.pageYOffset > 50) {
